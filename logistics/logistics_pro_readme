@@ -1,0 +1,4 @@
+There are trucks and airplanes that can move packages between different airports and cities.
+We assume that in the initial state there is a truck in Paris airport. 
+An airplane and two packages are in London airport. Paris has two places : south and north.
+The goal is to have one package in the north location and the other one in the south location.
