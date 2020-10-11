@@ -11,7 +11,7 @@
 )
 
 
-(:action up
+(:action left
     :parameters (?t ?x ?y ?by)
     :precondition (and
         (tile ?t) (position ?x) (position ?y) (position ?by)
@@ -23,7 +23,7 @@
     )
 )
 
-(:action down
+(:action right
     :parameters (?t ?x ?y ?by)
     :precondition (and 
         (tile ?t) (position ?x) (position ?y) (position ?by)
@@ -35,7 +35,7 @@
     )
 )
 
-(:action right
+(:action down
     :parameters (?t ?x ?y ?bx)
     :precondition (and 
         (tile ?t) (position ?x) (position ?y) (position ?bx)
@@ -47,7 +47,7 @@
     )
 )
 
-(:action left
+(:action up
     :parameters (?t ?x ?y ?bx)
     :precondition (and 
         (tile ?t) (position ?x) (position ?y) (position ?bx)
