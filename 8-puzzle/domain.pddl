@@ -1,23 +1,64 @@
-;Header and description
+(define (domain puzzle)
 
-(define (domain domain_name)
+(:requirements :strips )
 
-;remove requirements that are not needed
-(:requirements :strips :fluents :durative-actions :timed-initial-literals :typing :conditional-effects :negative-preconditions :duration-inequalities :equality)
 
-(:types ;todo: enumerate types and their hierarchy here, e.g. car truck bus - vehicle
-)
 
-; un-comment following line if constants are needed
-;(:constants )
-
-(:predicates ;todo: define predicates here
+(:predicates 
+    (tile ?t1) (position ?p1)
+    (at ?t1 ?x ?y) (blank ?x ?y)
+    (inc ?x1 ?x2) (dec ?x1 ?x2 )
 )
 
 
-(:functions ;todo: define numeric functions here
+(:action up
+    :parameters (?t ?x ?y ?by)
+    :precondition (and
+        (tile ?t) (position ?x) (position ?y) (position ?by)
+        (at ?t ?x ?y) (blank ?x ?by) (dec ?y ?by)
+    )
+    :effect (and
+        (not (at ?t ?x ?y)) (not (blank ?x ?by))
+        (at ?t ?x ?by) (blank ?x ?y) 
+    )
 )
 
-;define actions here
+(:action down
+    :parameters (?t ?x ?y ?by)
+    :precondition (and 
+        (tile ?t) (position ?x) (position ?y) (position ?by)
+        (at ?t ?x ?y) (blank ?x ?by) (inc ?y ?by)
+    )
+    :effect (and
+        (not (at ?t ?x ?y)) (not (blank ?x ?by))
+        (at ?t ?x ?by) (blank ?x ?y) 
+    )
+)
+
+(:action right
+    :parameters (?t ?x ?y ?bx)
+    :precondition (and 
+        (tile ?t) (position ?x) (position ?y) (position ?bx)
+        (at ?t ?x ?y) (blank ?bx ?y) (inc ?x ?bx)
+    )
+    :effect (and
+        (not (at ?t ?x ?y)) (not (blank ?bx ?y))
+        (at ?t ?bx ?y) (blank ?x ?y) 
+    )
+)
+
+(:action left
+    :parameters (?t ?x ?y ?bx)
+    :precondition (and 
+        (tile ?t) (position ?x) (position ?y) (position ?bx)
+        (at ?t ?x ?y) (blank ?bx ?y) (dec ?x ?bx)
+    )
+    :effect (and
+        (not (at ?t ?x ?y)) (not (blank ?bx ?y))
+        (at ?t ?bx ?y) (blank ?x ?y) 
+    )
+)
+
+
 
 )
